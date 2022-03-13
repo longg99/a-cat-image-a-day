@@ -7,25 +7,18 @@ export const getRandomCatImg = async () => {
   });
 };
 
+// call to our backend from here
 export const getAllBreeds = async () => {
   return await axios({
     method: "get",
-    url: "https://api.thecatapi.com/v1/breeds",
-    headers: {
-      // the API key
-      "x-api-key": "9779cf76-5952-479e-95fa-9c0a2ca1e69c",
-    },
+    url: "/breeds",
   });
 };
 
 export const getAllCategories = async () => {
   return await axios({
     method: "get",
-    url: "https://api.thecatapi.com/v1/categories",
-    headers: {
-      // the API key
-      "x-api-key": "9779cf76-5952-479e-95fa-9c0a2ca1e69c",
-    },
+    url: "/categories",
   });
 };
 
@@ -33,11 +26,7 @@ export const getBreedInfo = async ({ queryKey }) => {
   const [_key, breedId] = queryKey;
   return await axios({
     method: "get",
-    url: `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`,
-    headers: {
-      // the API key
-      "x-api-key": "9779cf76-5952-479e-95fa-9c0a2ca1e69c",
-    },
+    url: `/breeds/${breedId}`,
   });
 };
 
@@ -46,10 +35,6 @@ export const getImgByCategory = async ({ queryKey }) => {
   const [_key, categoryId] = queryKey;
   return await axios({
     method: "get",
-    url: `https://api.thecatapi.com/v1/images/search?category_ids=${categoryId}`,
-    headers: {
-      // the API key
-      "x-api-key": "9779cf76-5952-479e-95fa-9c0a2ca1e69c",
-    },
+    url: `/categories/${categoryId}`,
   });
 };
